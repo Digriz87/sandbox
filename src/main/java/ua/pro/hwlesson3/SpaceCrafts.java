@@ -5,8 +5,6 @@ public class SpaceCrafts {
 
     public SpaceCrafts() {
         engine = new Engine(true);
-
     }
-
 
 }

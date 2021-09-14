@@ -7,4 +7,7 @@ public class Engine {
         this.durability = durability;
 
     }
+    public boolean check() {
+        return  durability;
+    }
 }
