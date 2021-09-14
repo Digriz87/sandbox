@@ -4,10 +4,10 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-        SpaceStation spaceStation = new SpaceStation();
-        spaceStation.start();
-        System.out.println(spaceStation.rocketAtLaunch);
+        Rocket rocket = new Rocket();
+       SpaceStation spaceStation = new SpaceStation(rocket);
+       spaceStation.start();
+       spaceStation.rocketAtLaunch();
 
     }
 

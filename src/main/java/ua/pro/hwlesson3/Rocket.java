@@ -3,33 +3,24 @@ package ua.pro.hwlesson3;
 public class Rocket extends SpaceCrafts {
 
     int fuel = 0;
-    SpaceCrafts spaceCraft = new SpaceCrafts();
+    Engine engine = new Engine(true);
+    Rocket rocket;
+    SpaceStation spaceStation = new SpaceStation(rocket);
 
-    public void checkFuel() {
-        if (fuel == 0) {
-            System.out.println("Станция: Двигатель заправлен на: " + fuel + " передаем на дозаправку");
-            refuelRocket();
 
-        } else {
-            System.out.println("Станция: Двигатель заправлен на: " + fuel);
 
-        }
+
+    public int checkFuel(int fuel) {
+        return fuel;
     }
 
-    public void checkEngine() {
-        if (spaceCraft.engine.durability == true) {
-            System.out.println("Станция: Двигатель в порядке");
-            System.out.println("Станция: Параметры в порядке, готовы к старту, ждем ответа от Станции");
-
-        } else {
-            System.out.println("Станция: Что-то не так");
-
-        }
+    public boolean checkEngine(Engine engine) {
+          return true;
     }
 
     public void refuelRocket() {
-        this.fuel = 100;
-        checkFuel();
+        fuel = 100;
+
     }
 }
 
