@@ -1,61 +1,36 @@
 package ua.pro.hwlesson3;
 
-public class Rocket extends SpaceStation {
+public class Rocket extends SpaceCrafts {
 
+    int fuel = 0;
+    SpaceCrafts spaceCraft = new SpaceCrafts();
 
-    public static void main(String[] args) {
-        SpaceCrafts spacecrafts = new  SpaceCrafts();
-        Engine engineSpaceX = new  Engine();
-        SpaceStation spaceStation = new SpaceStation();
-        checkParamsFuel (spacecrafts.fuel);
-        checkEngineSpaceX (engineSpaceX.durability);
-        System.out.println(spaceStation.gives);
-        String startFromSpaceStation = spacecrafts.start();
-        startSpaceX(startFromSpaceStation);
-
-    }
-
-    private static void startSpaceX(String startFromSpaceStation) {
-
-        System.out.println(startFromSpaceStation);
-
-    }
-
-    private static void checkEngineSpaceX(boolean durability) {
-        if (durability == true) {
-            System.out.println("Космонавт: Двигатель в порядке");
-            System.out.println("Космонавт: Параметры в порядке, готовы к старту, ждем ответа от Станции");
-
-        }else
-        {
-            System.out.println("Что-то не так");
-
-        }
-    }
-
-
-    public static void checkParamsFuel(int fuel) {
-
+    public void checkFuel() {
         if (fuel == 0) {
-            System.out.println("Космонавт: Двигатель заправлен на: " + fuel + " передаем на дозаправку");
-            refuelRocket ();
+            System.out.println("Станция: Двигатель заправлен на: " + fuel + " передаем на дозаправку");
+            refuelRocket();
 
-        }else
-        {
+        } else {
             System.out.println("Станция: Двигатель заправлен на: " + fuel);
 
         }
     }
 
-    public static void refuelRocket() {
-        int fuel = 100;
-        checkParamsFuel(fuel);
+    public void checkEngine() {
+        if (spaceCraft.engine.durability == true) {
+            System.out.println("Станция: Двигатель в порядке");
+            System.out.println("Станция: Параметры в порядке, готовы к старту, ждем ответа от Станции");
 
+        } else {
+            System.out.println("Станция: Что-то не так");
+
+        }
     }
 
-
-
-
+    public void refuelRocket() {
+        this.fuel = 100;
+        checkFuel();
+    }
 }
 
 
