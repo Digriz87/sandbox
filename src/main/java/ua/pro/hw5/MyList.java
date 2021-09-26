@@ -43,10 +43,10 @@ public interface MyList {
      * list.
      *
      * @param index the index of the element to be removed
-     * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException if the index is out of range
+     * @return
      */
-    Object remove(int index);
+    boolean remove(int index);
 
     /**
      * Appends all of the elements in the specified collection to the end of

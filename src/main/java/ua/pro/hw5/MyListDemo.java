@@ -1,19 +1,16 @@
 package ua.pro.hw5;
 
 
-import java.util.Arrays;
-
+import org.w3c.dom.ls.LSOutput;
 
 public class MyListDemo implements MyList {
 
-    private Object[] someObjects = new Object[10];
-    private Object[] newArrayObjects;
+    Object[] array = new Object[0];
 
-    private int pointer = 0;
 
     @Override
     public int size() {
-        return pointer;
+        return array.length;
     }
 
     @Override
@@ -28,11 +25,13 @@ public class MyListDemo implements MyList {
 
 
     @Override
-    public Object remove(int index) {
-        Object removed = someObjects[index - 1];
-        someObjects[index - 1] = null;
-        pointer--;
-        return removed;
+    public boolean remove(int index) {
+        boolean temp = false;
+        if (index < array.length) {
+            array[index] = null;
+            temp = true;
+        }
+        return temp;
     }
 
     @Override
@@ -42,17 +41,33 @@ public class MyListDemo implements MyList {
 
     @Override
     public void clear() {
+        if (array != null) {
+            array = new Object[0];
+        }
 
     }
 
     @Override
-    public Object get(int pointer) {
-        return someObjects[pointer - 1];
+    public Object get(int index) {
+        return array[index];
     }
 
     @Override
     public void set(int index, Object o) {
+        Object[] arrSet = new Object[array.length];
 
+        for (int i = 0; i < arrSet.length; i++) {
+            if (i == index) {
+                arrSet[i] = o;
+            } else {
+                arrSet[i] = array[i];
+            }
+        }
+        array = new Object[arrSet.length];
+
+        for (int i = 0; i < arrSet.length; i++) {
+            array[i] = arrSet[i];
+        }
     }
 
     @Override
@@ -63,7 +78,17 @@ public class MyListDemo implements MyList {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        int index = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == o) {
+                index = i;
+                break;
+            } else {
+                index = -1;
+            }
+        }
+        return index;
     }
 
     @Override
@@ -78,18 +103,25 @@ public class MyListDemo implements MyList {
 
     @Override
     public void add(Object o) {
-        if (someObjects.length == pointer){
-            System.out.println("Упс заполнен массив, копируем в другой");
-           newArrayObjects = Arrays.copyOf(someObjects, someObjects.length+1);
-            Arrays.fill(someObjects, null);
-            pointer = 0;
+        Object[] arrayAdd = new Object[array.length + 1];
+
+        for (int i = 0; i < arrayAdd.length; i++) {
+            if (i == arrayAdd.length - 1) {
+                arrayAdd[i] = o;
+            } else {
+                arrayAdd[i] = array[i];
+            }
         }
 
-            someObjects[pointer] = o;
-            pointer++;
+        array = new Object[arrayAdd.length];
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = arrayAdd[i];
+        }
 
 
     }
+
 
     @Override
     public boolean remove(Object o) {

@@ -14,23 +14,19 @@ public class Main {
         System.out.println(obj1.equals(obj2));
         System.out.println(obj1.hashCode() == obj2.hashCode());
 
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        System.out.println(listDemo.remove(listDemo.size() - 1));
 
         listDemo.add(new Object());
         listDemo.add(new Object());
         listDemo.add(new Object());
         listDemo.add(new Object());
         listDemo.add(new Object());
-        System.out.println(listDemo.get(listDemo.size()));
-
+        listDemo.add(new Object());
+        System.out.println(listDemo.get(2));
+        System.out.println(listDemo.remove(3));
+        System.out.println(listDemo.get(3));
         System.out.println(listDemo.size());
+
+
 
 
     }
