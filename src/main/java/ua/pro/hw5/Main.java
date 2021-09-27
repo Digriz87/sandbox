@@ -19,14 +19,12 @@ public class Main {
         listDemo.add(new Object());
         listDemo.add(new Object());
         listDemo.add(new Object());
-        listDemo.add(new Object());
-        listDemo.add(new Object());
-        System.out.println(listDemo.get(2));
-        System.out.println(listDemo.remove(3));
-        System.out.println(listDemo.get(3));
+
+
+
         System.out.println(listDemo.size());
-
-
+        System.out.println(listDemo.remove(2));
+        System.out.println(listDemo.size());
 
 
     }

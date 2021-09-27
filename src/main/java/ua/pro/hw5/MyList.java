@@ -24,8 +24,9 @@ public interface MyList {
      * Appends the specified element to the end of this list including null references.
      *
      * @param o element to be appended to this list
+     * @return
      */
-    void add(Object o);
+    boolean add(Object o);
 
     /**
      * Removes the first occurrence of the specified element from this list,
@@ -46,7 +47,7 @@ public interface MyList {
      * @throws IndexOutOfBoundsException if the index is out of range
      * @return
      */
-    boolean remove(int index);
+    Object remove(int index);
 
     /**
      * Appends all of the elements in the specified collection to the end of
@@ -79,8 +80,9 @@ public interface MyList {
      * @param index index of the element to replace
      * @param o element to be placed at the specified position
      * @throws IndexOutOfBoundsException if the index is out of range
+     * @return
      */
-    void set(int index, Object o);
+    Object set(int index, Object o);
 
     /**
      * Inserts the specified element at the specified position in this list.

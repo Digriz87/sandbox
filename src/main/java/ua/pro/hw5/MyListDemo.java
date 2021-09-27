@@ -1,78 +1,96 @@
 package ua.pro.hw5;
 
 
-import org.w3c.dom.ls.LSOutput;
-
 public class MyListDemo implements MyList {
 
-    Object[] array = new Object[0];
-
+    Object[] array = new Object[10];
+    private int pointer;
+    Object removed;
 
     @Override
     public int size() {
-        return array.length;
+        return pointer;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return pointer == 0;
     }
 
     @Override
     public boolean contains(Object o) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) return false;
+            if (array[i].equals(o)) return true;
+        }
         return false;
     }
 
 
     @Override
-    public boolean remove(int index) {
-        boolean temp = false;
-        if (index < array.length) {
-            array[index] = null;
-            temp = true;
-        }
-        return temp;
+    public Object remove(int index) {
+        if (array[index] == null) throw new IndexOutOfBoundsException("index out");
+
+        removed = array[index];
+        int tillEnd = pointer - index - 1;
+        System.arraycopy(array, index + 1, array, index, tillEnd);
+        pointer--;
+        array[pointer] = null;
+
+        return removed;
     }
 
     @Override
     public boolean addAll(MyList list) {
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
+        }
         return false;
     }
 
     @Override
     public void clear() {
-        if (array != null) {
-            array = new Object[0];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = null;
         }
+        Object[] newArray = new Object[10];
+        array = newArray;
+        pointer = 0;
 
     }
 
     @Override
     public Object get(int index) {
+        if (array[index] == null) throw new IndexOutOfBoundsException("index out of range");
         return array[index];
     }
 
     @Override
-    public void set(int index, Object o) {
-        Object[] arrSet = new Object[array.length];
-
-        for (int i = 0; i < arrSet.length; i++) {
-            if (i == index) {
-                arrSet[i] = o;
-            } else {
-                arrSet[i] = array[i];
-            }
-        }
-        array = new Object[arrSet.length];
-
-        for (int i = 0; i < arrSet.length; i++) {
-            array[i] = arrSet[i];
-        }
+    public Object set(int index, Object o) {
+        if (array[index] == null) throw new IndexOutOfBoundsException("index out of range");
+        Object previousObj = array[index];
+        array[index] = o;
+        return previousObj;
     }
 
     @Override
     public void add(int index, Object o) {
-
+        if (array[index] == null) throw new IndexOutOfBoundsException("index out of range");
+        if (index == pointer) {
+            add(o);
+            return;
+        }
+        if (pointer == array.length - 1) {
+            Object[] newArray = new Object[(int) (array.length * 1.3)];
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = array[i];
+            }
+            array = newArray;
+        }
+        int tillEnd = pointer - index;
+        System.arraycopy(array, index, array, index + 1, tillEnd);
+        array[index] = o;
+        pointer++;
     }
 
 
@@ -93,31 +111,32 @@ public class MyListDemo implements MyList {
 
     @Override
     public MyList subList(int fromIndex) {
-        return null;
+        return subList(fromIndex, pointer);
     }
 
     @Override
     public MyList subList(int fromIndex, int toIndex) {
-        return null;
+        if (toIndex > size()) throw new IndexOutOfBoundsException("final index out of range");
+        MyList result = new MyListDemo();
+        for (int i = fromIndex; i < toIndex; i++) {
+            result.add(array[i]);
+        }
+        return result;
     }
 
+
     @Override
-    public void add(Object o) {
-        Object[] arrayAdd = new Object[array.length + 1];
-
-        for (int i = 0; i < arrayAdd.length; i++) {
-            if (i == arrayAdd.length - 1) {
-                arrayAdd[i] = o;
-            } else {
-                arrayAdd[i] = array[i];
+    public boolean add(Object o) {
+        if (pointer == array.length - 1) {
+            Object[] newArray = new Object[(int) (array.length * 1.3)];
+            for (int i = 0; i < array.length; i++) {
+                newArray[i] = array[i];
             }
+            array = newArray;
         }
-
-        array = new Object[arrayAdd.length];
-
-        for (int i = 0; i < array.length; i++) {
-            array[i] = arrayAdd[i];
-        }
+        array[pointer] = o;
+        pointer++;
+        return true;
 
 
     }
@@ -125,6 +144,16 @@ public class MyListDemo implements MyList {
 
     @Override
     public boolean remove(Object o) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) throw new IndexOutOfBoundsException("index out of range");
+            if (array[i].equals(o)) {
+                int tillEnd = pointer - i - 1;
+                System.arraycopy(array, i + 1, array, i, tillEnd);
+                pointer--;
+                array[pointer] = null;
+                return true;
+            }
+        }
         return false;
     }
 }
