@@ -1,6 +1,6 @@
 package ua.pro.hw6;
 
-public interface MyList {
+public interface MyList<E> {
 
     /**
      * @return the number of elements in this list
@@ -18,7 +18,7 @@ public interface MyList {
      * @param o element whose presence in this list is to be tested
      * @return <tt>true</tt> if this list contains the specified element
      */
-    boolean contains(Object o);
+    boolean contains(E o);
 
     /**
      * Appends the specified element to the end of this list including null references.
@@ -26,7 +26,7 @@ public interface MyList {
      * @param o element to be appended to this list
      * @return <tt>true</tt> if this list changed as a result of the call
      */
-    boolean add(Object o);
+    boolean add(E o);
 
     /**
      * Removes the first occurrence of the specified element from this list,
@@ -35,7 +35,7 @@ public interface MyList {
      * @param o element to be removed from this list, if present
      * @return <tt>true</tt> if this list contained the specified element
      */
-    boolean remove(Object o);
+    boolean remove(E o);
 
     /**
      * Removes the element at the specified position in this list
@@ -47,7 +47,7 @@ public interface MyList {
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException if the index is out of range
      */
-    Object remove(int index);
+    boolean remove(int index);
 
     /**
      * Appends all of the elements in the specified collection to the end of
@@ -56,7 +56,7 @@ public interface MyList {
      * @param list collection containing elements to be added to this list
      * @return <tt>true</tt> if this list changed as a result of the call
      */
-    boolean addAll(MyList list);
+    boolean addAll(MyList<E> list);
 
     /**
      * Removes all of the elements from this list.
@@ -71,7 +71,7 @@ public interface MyList {
      * @return the element at the specified position in this list
      * @throws IndexOutOfBoundsException if the index is out of range
      */
-    Object get(int index);
+    E get(int index);
 
     /**
      * Replaces the element at the specified position in this list with the
@@ -82,7 +82,7 @@ public interface MyList {
      * @return the element previously at the specified position
      * @throws IndexOutOfBoundsException if the index is out of range
      */
-    Object set(int index, Object o);
+    Object set(int index, E o);
 
     /**
      * Inserts the specified element at the specified position in this list.
@@ -93,7 +93,7 @@ public interface MyList {
      * @param o element to be inserted
      * @throws IndexOutOfBoundsException if the index is out of range
      */
-    void add(int index, Object o);
+    void add(int index, E o);
 
     /**
      * Returns the index of the first occurrence of the specified element
@@ -103,7 +103,7 @@ public interface MyList {
      * @return the index of the first occurrence of the specified element in
      *         this list, or -1 if this list does not contain the element
      */
-    int indexOf(Object o);
+    int indexOf(E o);
 
     /**
      * Returns a portion of this list between the specified
@@ -115,7 +115,7 @@ public interface MyList {
      * @return a portion of the specified range within this list
      * @throws IndexOutOfBoundsException for an illegal endpoint index value
      */
-    MyList subList(int fromIndex);
+    MyList<E> subList(int fromIndex);
 
     /**
      * Returns a portion of this list between the specified
@@ -128,7 +128,7 @@ public interface MyList {
      * @return a portion of the specified range within this list
      * @throws IndexOutOfBoundsException for an illegal endpoint index value
      */
-    MyList subList(int fromIndex, int toIndex);
+    MyList<E> subList(int fromIndex, int toIndex);
 
 }
 

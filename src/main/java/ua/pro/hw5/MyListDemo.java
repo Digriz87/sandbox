@@ -1,9 +1,9 @@
 package ua.pro.hw5;
 
 
-public class MyListDemo implements MyList {
+public class MyListDemo<E> implements MyList<E>  {
 
-    Object[] array = new Object[10];
+    private E[] array = (E[]) new Object [10];
     private int pointer;
     Object removed;
 
@@ -28,7 +28,7 @@ public class MyListDemo implements MyList {
 
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         if (array[index] == null) throw new IndexOutOfBoundsException("index out");
 
         removed = array[index];
@@ -37,11 +37,11 @@ public class MyListDemo implements MyList {
         pointer--;
         array[pointer] = null;
 
-        return removed;
+        return (E) removed;
     }
 
     @Override
-    public boolean addAll(MyList list) {
+    public boolean addAll(MyList<E> list) {
         for (int i = 0; i < list.size(); i++) {
             add(list.get(i));
         }
@@ -54,7 +54,7 @@ public class MyListDemo implements MyList {
             array[i] = null;
         }
         Object[] newArray = new Object[10];
-        array = newArray;
+        array = (E[]) newArray;
         pointer = 0;
 
     }
@@ -69,7 +69,7 @@ public class MyListDemo implements MyList {
     public Object set(int index, Object o) {
         if (array[index] == null) throw new IndexOutOfBoundsException("index out of range");
         Object previousObj = array[index];
-        array[index] = o;
+        array[index] = (E) o;
         return previousObj;
     }
 
@@ -85,11 +85,11 @@ public class MyListDemo implements MyList {
             for (int i = 0; i < array.length; i++) {
                 newArray[i] = array[i];
             }
-            array = newArray;
+            array = (E[]) newArray;
         }
         int tillEnd = pointer - index;
         System.arraycopy(array, index, array, index + 1, tillEnd);
-        array[index] = o;
+        array[index] = (E) o;
         pointer++;
     }
 
@@ -110,14 +110,14 @@ public class MyListDemo implements MyList {
     }
 
     @Override
-    public MyList subList(int fromIndex) {
+    public MyList<E> subList(int fromIndex) {
         return subList(fromIndex, pointer);
     }
 
     @Override
-    public MyList subList(int fromIndex, int toIndex) {
+    public MyList<E> subList(int fromIndex, int toIndex) {
         if (toIndex > size()) throw new IndexOutOfBoundsException("final index out of range");
-        MyList result = new MyListDemo();
+        MyList<E> result = new MyListDemo();
         for (int i = fromIndex; i < toIndex; i++) {
             result.add(array[i]);
         }
@@ -132,9 +132,9 @@ public class MyListDemo implements MyList {
             for (int i = 0; i < array.length; i++) {
                 newArray[i] = array[i];
             }
-            array = newArray;
+            array = (E[]) newArray;
         }
-        array[pointer] = o;
+        array[pointer] = (E) o;
         pointer++;
         return true;
 

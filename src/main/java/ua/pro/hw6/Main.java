@@ -6,19 +6,19 @@ package ua.pro.hw6;
 public class Main {
     public static void main(String[] args) {
 
-        MyList mylist = new LinkedListTwo();
-        mylist.add("first");
-        mylist.add("second");
-        mylist.add("three");
+        MyList<Object> mist = new LinkedListTwo<>();
+        mist.add("first");
+        mist.add("second");
+        mist.add("three");
 
 
-        System.out.println(mylist.get(0));
-        System.out.println(mylist.indexOf("second"));
-        System.out.println(mylist.contains("gggg"));
-        System.out.println(mylist.remove("gggg"));
-        System.out.println(mylist.get(1));
-        System.out.println(mylist.get(2));
-        System.out.println(mylist.size());
+        System.out.println(mist.get(0));
+        System.out.println(mist.indexOf("second"));
+        System.out.println(mist.contains("gggg"));
+        System.out.println(mist.remove("gggg"));
+        System.out.println(mist.get(1));
+        System.out.println(mist.get(2));
+        System.out.println(mist.size());
 
     }
 }
