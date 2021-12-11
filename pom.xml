@@ -7,6 +7,14 @@
     <groupId>ua.protsenko</groupId>
     <artifactId>Java_elementary_VP</artifactId>
     <version>0.1</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>

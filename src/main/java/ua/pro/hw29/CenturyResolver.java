@@ -7,6 +7,7 @@ public class CenturyResolver {
         if (year == 0) {
             throw new InputIntIsZeroException("there was no 0 year.");
         }
+
         if (year % 100 == 0) {
             return year / 100;
         } else {
