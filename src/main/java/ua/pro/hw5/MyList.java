@@ -48,7 +48,6 @@ public interface MyList<E> {
      * @return
      */
     Object remove(int index);
-
     /**
      * Appends all of the elements in the specified collection to the end of
      * this list, in the original order.
@@ -57,7 +56,6 @@ public interface MyList<E> {
      * @return <tt>true</tt> if this list changed as a result of the call
      */
     boolean addAll(MyList<E> list);
-
     /**
      * Removes all of the elements from this list.
      * The list will be empty after this call.

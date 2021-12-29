@@ -26,7 +26,6 @@ public class MyListDemo<E> implements MyList<E>  {
         return false;
     }
 
-
     @Override
     public E remove(int index) {
         if (array[index] == null) throw new IndexOutOfBoundsException("index out");
